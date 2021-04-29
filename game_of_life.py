@@ -11,7 +11,6 @@ class GameOfLife():
         self.height = 16
         self.blur = 1
         self.matrix = np.zeros((self.height, self.width))
-        self.blurred_matrix = gaussian_filter(self.matrix, self.blur)
         self.add_random_shapes()
 
     def load_start_shape(self):
@@ -54,12 +53,7 @@ class GameOfLife():
         return will_be_born, will_die
 
     def play_game(self):
-        # game_is_on = True
-        # i = 0
-        # while game_is_on:
-        #     plt.figure(i + 1)
-        #     plt.matshow(self.blurred_matrix)
-        #     i += 1
+
         shape_adder = random.randint(0, 1)
         live, die = self.check_live_or_die()
         for born in live:
@@ -70,9 +64,5 @@ class GameOfLife():
 
         if shape_adder == 0:
             self.add_random_shapes()
-
-        if i > 20:
-            game_is_on = False
-
-        self.blurred_matrix = gaussian_filter(self.matrix, self.blur)
-        #plt.show()
+        blurred_matrix = gaussian_filter(self.matrix, self.blur)
+        return blurred_matrix

@@ -55,7 +55,7 @@ def draw_particle_image(particle_list):
 
 
 def draw_gol_image():
-
+    gol.play_game()
     frame = gol.blurred_matrix
     frame = frame / np.max(frame)
 
